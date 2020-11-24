@@ -26,7 +26,7 @@ int main(int argc, char** argv)
     }
     else if (tmp == 0)
     {
-        std::cout << "x = " << (-b) / 2 * a << std::endl;
+        std::cout << "x = " << (-b) / (2 * a) << std::endl;
     }
     else
     {
