@@ -16,8 +16,7 @@
 double root_iterative(double q, unsigned n, unsigned steps)
 {
 	if (n) {		
-		double a{ 1 };
-		if (n==1) return q;
+		double a{ q };
 		for (int i = 0; i < steps; ++i) {
 			a += (q/power::recursive(a, n-1)-a)/n;
 		}
