@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "power.h"
 
 int main(int argc, char** argv)
