@@ -2,7 +2,8 @@
 
 namespace power
 {
-    int interative(int q, int n)
+    // O(n) because of for-loop
+    int iterative(int q, int n)
     {
         int tmp = q;
 
@@ -11,13 +12,9 @@ namespace power
             std::cout << "Exponent keine positive ganze Zahl!" << std::endl;
             return 0;
         }
-        if (n == 0)
+        else if (n < 1)
         {
-            return 1;
-        }
-        if(n == 1)
-        {
-            return q;
+            return n < 1 ? 1 : q;
         }
         
         for (int i = 1; i < n; i++)
@@ -28,6 +25,7 @@ namespace power
         return tmp;
     }
 
+    // O(log n) because of recursive definition of powers used
     int recursive(int q, int n)
     {
         int tmp;
@@ -37,11 +35,11 @@ namespace power
             std::cout << "Exponent keine positive ganze Zahl!" << std::endl;
             return 0;
         }
-        if (n == 0)
+        else if (n == 0)
         {
             return 1;
         }
-        if (n%2 == 0)
+        else if (n%2 == 0)
         {
             tmp = recursive(q, n/2);
             return tmp *= tmp;
@@ -50,7 +48,6 @@ namespace power
         {
             return q * recursive(q, n - 1);
         }
-        
     }
 }
 
@@ -63,6 +60,6 @@ int main(int argc, char** argv)
     std::cout << "n = " << std::flush;
     std::cin >> n;
 
-    std::cout << power::interative(q, n) << std::endl;
+    std::cout << power::iterative(q, n) << std::endl;
     std::cout << power::recursive(q, n) << std::endl;
 }
