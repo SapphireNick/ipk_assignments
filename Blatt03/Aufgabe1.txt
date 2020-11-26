@@ -1,3 +1,5 @@
 Repository-Links:
 
 Nikita-Nick Funk: https://github.com/SapphireNick/ipk_assignments
+Dennis Jakob: https://github.com/d-jakob/ipk
+Till Rostalski: https://github.com/ritterrost/ipk-exercises
