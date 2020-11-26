@@ -7,12 +7,7 @@ namespace power
     {
         int tmp = q;
 
-        if (n < 0)
-        {
-            std::cout << "Exponent keine positive ganze Zahl!" << std::endl;
-            return 0;
-        }
-        else if (n < 1)
+        if (n < 1)
         {
             return n < 1 ? 1 : q;
         }
@@ -30,12 +25,7 @@ namespace power
     {
         int tmp;
 
-        if (n < 0)
-        {
-            std::cout << "Exponent keine positive ganze Zahl!" << std::endl;
-            return 0;
-        }
-        else if (n == 0)
+        if (n == 0)
         {
             return 1;
         }
@@ -49,7 +39,7 @@ namespace power
             return q * recursive(q, n - 1);
         }
     }
-}
+} // end namespace power
 
 int main(int argc, char** argv)
 {
@@ -59,6 +49,12 @@ int main(int argc, char** argv)
     std::cin >> q;
     std::cout << "n = " << std::flush;
     std::cin >> n;
+
+    if (n < 0)
+    {
+        std::cout << "Exponent keine positive ganze Zahl!" << std::endl;
+        return 0;
+    }
 
     std::cout << power::iterative(q, n) << std::endl;
     std::cout << power::recursive(q, n) << std::endl;
