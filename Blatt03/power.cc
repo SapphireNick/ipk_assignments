@@ -5,7 +5,7 @@ namespace power
 	* @brief: calculates q to the nth power iteratively
 	*
 	* @param: int q
-	*       : unsigned n
+	*       : int n
 	*
 	* @return: int
 	*/
@@ -23,7 +23,7 @@ namespace power
 	* @brief: calculates q to the nth power recursively
 	*
 	* @param: int q
-	*       : unsigned n
+	*       : int n
 	*
 	* @return: int
 	*/
