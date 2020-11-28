@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <utility>
 
-namespace aufgabe1
+namespace a1
 {
 	//b
 	/**
@@ -76,7 +76,7 @@ namespace aufgabe1
 			std::swap(v[i-1], v[v.size()-i]);
 		}
 	}
-} /* aufgabe1 */ 
+} /* a1 */ 
 
 template <typename T>
 void printv(std::vector<T> const& v)
@@ -95,49 +95,49 @@ int main(int argc, char** argv)
 	std::vector<double> v2{ 0, 1, 2 };
 	std::vector<double> v3{ 0, 1, 2, 3 };
 	std::vector<double> v0{};
-	auto pair = aufgabe1::minmax(v);
+	auto pair = a1::minmax(v);
 	
 	std::cout << "pair:" << '\n';
 	std::cout << pair.first << ' ' << pair.second << '\n';
 
-	pair = aufgabe1::minmax(v1);
+	pair = a1::minmax(v1);
 	std::cout << "pair:" << '\n';
 	std::cout << pair.first << ' ' << pair.second << '\n';
 
-	pair = aufgabe1::minmax(v2);
+	pair = a1::minmax(v2);
 	std::cout << "pair:" << '\n';
 	std::cout << pair.first << ' ' << pair.second << '\n';
 
-	pair = aufgabe1::minmax(v3);
+	pair = a1::minmax(v3);
 	std::cout << "pair:" << '\n';
 	std::cout << pair.first << ' ' << pair.second << '\n';
 
-	pair = aufgabe1::minmax(v0);
+	pair = a1::minmax(v0);
 	std::cout << "pair:" << '\n';
 	std::cout << pair.first << ' ' << pair.second << '\n';
 
 	printv(v);
-	aufgabe1::reverse(v);
+	a1::reverse(v);
 	printv(v);
-	printv(aufgabe1::reversed(v));
+	printv(a1::reversed(v));
 
 	printv(v2);
-	aufgabe1::reverse(v2);
+	a1::reverse(v2);
 	printv(v2);
-	printv(aufgabe1::reversed(v2));
+	printv(a1::reversed(v2));
 
 	printv(v3);
-	aufgabe1::reverse(v3);
+	a1::reverse(v3);
 	printv(v3);
-	printv(aufgabe1::reversed(v3));
+	printv(a1::reversed(v3));
 
 	printv(v0);
-	aufgabe1::reverse(v0);
+	a1::reverse(v0);
 	printv(v0);
-	printv(aufgabe1::reversed(v0));
+	printv(a1::reversed(v0));
 
 	printv(v1);
-	aufgabe1::round_vector(v1);
+	a1::round_vector(v1);
 	printv(v1);
 
 	std::cout << '\n';
