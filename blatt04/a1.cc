@@ -100,6 +100,22 @@ int main(int argc, char** argv)
 	std::cout << "pair:" << '\n';
 	std::cout << pair.first << ' ' << pair.second << '\n';
 
+	pair = aufgabe1::minmax(v1);
+	std::cout << "pair:" << '\n';
+	std::cout << pair.first << ' ' << pair.second << '\n';
+
+	pair = aufgabe1::minmax(v2);
+	std::cout << "pair:" << '\n';
+	std::cout << pair.first << ' ' << pair.second << '\n';
+
+	pair = aufgabe1::minmax(v3);
+	std::cout << "pair:" << '\n';
+	std::cout << pair.first << ' ' << pair.second << '\n';
+
+	pair = aufgabe1::minmax(v0);
+	std::cout << "pair:" << '\n';
+	std::cout << pair.first << ' ' << pair.second << '\n';
+
 	printv(v);
 	aufgabe1::reverse(v);
 	printv(v);
