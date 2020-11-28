@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     std::cout << std::endl;
     
     // 1a)
-    print_vector(int_v);
+    // print_vector(int_v);
 
     // 1b)
     // std::pair<int, int> maxmin = find_biggest_smallest(int_v);
@@ -52,6 +52,13 @@ int main(int argc, char** argv)
     // {
     //     std::cout << entry << std::endl;
     // }
+
+    // 1d)
+    round_entries(double_v);
+    for(double entry : double_v)
+    {
+        std::cout << entry << std::endl;
+    }
 
     // 1e)
     // reverse_swap(int_v);
@@ -90,11 +97,9 @@ std::vector<double> reversed(const std::vector<double>& v)
 
 void round_entries(std::vector<double>& v)
 {
-    int n = v.size();
-
-    for(int i = 0; i < n; i++)
+    for(double& entry : v)
     {
-        v[i] = std::round(v[i]);
+        entry = std::round(entry);
     }
 }
 
