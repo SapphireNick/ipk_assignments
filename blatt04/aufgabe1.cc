@@ -48,7 +48,7 @@ namespace aufgabe1
 
 	//d
 	/**
-	* @brief: rounds all elements of vector v;
+	* @brief: rounds all elements of vector v
 	*
 	* @param: std::vector<double> v
 	*
