@@ -4,6 +4,7 @@
 #include <algorithm> // for sort
 #include <cmath> // for round
 
+// forward declaration
 void print_vector(std::vector<int>& v);
 std::pair<int, int> find_biggest_smallest(std::vector<int> v);
 std::vector<double> reversed(const std::vector<double>& v);
