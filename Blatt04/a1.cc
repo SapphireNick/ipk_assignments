@@ -12,49 +12,53 @@ void reverse_swap(std::vector<int>& v);
 
 int main(int argc, char** argv)
 {
+    int vec_type;
+    int int_input;
+    double double_input;
+    std::vector<int> int_v;
+    std::vector<double> double_v;
+
+    std::cout << "<int> or <double>? [1|else]" << std::flush;
+    std::cin >> int_input;
+
+    if (int_input == 1)
+    {
+        while(std::cin >> int_input)
+        {
+            int_v.push_back(int_input);
+        }
+    }
+    else
+    {
+        while(std::cin >> double_input)
+        {
+            double_v.push_back(double_input);
+        }
+    }
+    std::cout << std::endl;
+    
     // 1a)
-    // std::vector<int> a = {1, 2, 3, 4, 5};
-    // print_vector(a);
+    print_vector(int_v);
 
     // 1b)
-    // initialize and test vectors b and c
-    // std::vector<int> b = {20, 4, 6, 28, 10};
-    // std::vector<int> c = {6, 5, 4, 3, 2, 1};
-    // std::pair<int, int> minmaxB = find_biggest_smallest(b);
-    // std::pair<int, int> minmaxC = find_biggest_smallest(c);
-
-    // std::cout << "max(b) = " << minmaxB.first << 
-    //     ", min(b) = " << minmaxB.second << std::endl;
-    // std::cout << "max(c) = " << minmaxC.first << 
-    //     ", min(c) = " << minmaxC.second << std::endl;
+    // std::pair<int, int> maxmin = find_biggest_smallest(int_v);
+    // std::cout << "max = " << maxmin.first << 
+    //     ", min = " << maxmin.second << std::endl;
 
     // 1c)
     // reversing an empty vector doesn't do anything - program just quits without output
-    // const std::vector<double> d = {2.6, 4.5, 93.2, 28, 10};
-    // const std::vector<double> e;
-    // std::vector<double> f = reversed(e);
-    // for(double entries : f)
-    // {
-    //     std::cout << entries << std::endl;
-    // }
-
-    // 1d)
-    // std::vector<double> d = {2.6, 4.5, 93.2, 28, 10};
-    // round_entries(d);
-
-    // for(double entry : d)
+    // const std::vector<double> rev = double_v;
+    // for(double entry : reversed(rev))
     // {
     //     std::cout << entry << std::endl;
     // }
 
     // 1e)
-    std::vector<int> d = {2, 4, 93, 28, 10};
-    reverse_swap(d);
-
-    for(double entry : d)
-    {
-        std::cout << entry << std::endl;
-    }
+    // reverse_swap(int_v);
+    // for(double entry : int_v)
+    // {
+    //     std::cout << entry << std::endl;
+    // }
 }
 
 void print_vector(std::vector<int>& v)
@@ -94,12 +98,11 @@ void round_entries(std::vector<double>& v)
     }
 }
 
-// doesnt work TODO
 void reverse_swap(std::vector<int>& v)
 {
     int n = v.size();
 
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < n/2; i++)
     {
         std::swap(v[i], v[n - i - 1]);
     }
