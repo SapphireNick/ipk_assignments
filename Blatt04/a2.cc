@@ -70,38 +70,35 @@ void convex_hull(std::vector<std::array<double, 2>>& points)
     std::sort(points.begin(), points.end(), sort_by_y);
 
     int n = points.size();
+    std::array<double, 2> tmp = points[0];
     for(int i = 1; i < n; i++)
     {
-        points[i][0] -= points[0][0];
-        points[i][1] -= points[0][1];
+        points[i][0] -= tmp[0];
+        points[i][1] -= tmp[1];
     }
 
     std::sort(points.begin() + 1, points.end(), sort_by_angle);
 
     for(int i = 1; i < n; i++)
     {
-        points[i][0] += points[0][0];
-        points[i][1] += points[0][1];
+        points[i][0] += tmp[0];
+        points[i][1] += tmp[1];
     }
 
     stack.push_back(points[0]);
     stack.push_back(points[1]);
 
-    int i = 0;
+    int i = 2;
     while(i < n)
     {
-        double tmp = calc_det_T(stack[i - 2], stack[i - 1], points[i]);
-        if (tmp < 0)
+        int stack_size = stack.size();
+        double tmp = calc_det_T(stack[stack_size - 2], stack[stack_size - 1], points[i]);
+        if (tmp > 0 || stack.size() == 2)
         {
             stack.push_back(points[i]);
             i++;
         }
-        else if (stack.size() == 2)
-        {
-            stack.push_back(points[i]);
-            i++;
-        }
-        else if (tmp > 0)
+        else if (tmp < 0)
         {
             stack.pop_back();
         }
