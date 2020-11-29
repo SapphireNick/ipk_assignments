@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 
-#VSCode specific files
+# VSCode specific files
 *.vscode
 
 # Compiled Object files
@@ -33,3 +33,21 @@
 *.exe
 *.out
 *.app
+
+# Archives
+*.tar.gz
+
+# Build directory
+build/
+
+# Doxygen
+dox/
+
+# Backups
+*~
+
+# Apple related bs
+.DS_Store
+
+# PDF
+*.pdf
