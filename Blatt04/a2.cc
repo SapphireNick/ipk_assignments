@@ -9,7 +9,7 @@ bool sort_by_y(std::array<double, 2> a, std::array<double, 2> b);
 bool sort_by_angle(std::array<double, 2> a, std::array<double, 2> b);
 double calc_det_T(std::array<double, 2> a, std::array<double, 2> b, std::array<double, 2> c);
 void convex_hull(std::vector<std::array<double, 2>>& points);
-void write_points_to_file(std::vector<std::array<double, 2>>& points);
+void write_points_to_file(std::string filename, std::vector<std::array<double, 2>>& points);
 
 int main(int argc, char** argv)
 {
@@ -20,7 +20,7 @@ int main(int argc, char** argv)
     std::vector<std::array<double, 2>> points = read_points_from_file(file_path);
 
     convex_hull(points);
-    write_points_to_file(points);
+    write_points_to_file("hull.txt", points);
 }
 
 std::vector<std::array<double, 2>> read_points_from_file(std::string filename)
@@ -66,7 +66,6 @@ double calc_det_T(std::array<double, 2> a, std::array<double, 2> b, std::array<d
 
 void convex_hull(std::vector<std::array<double, 2>>& points)
 {
-    std::vector<std::array<double, 2>> stack;
     std::sort(points.begin(), points.end(), sort_by_y);
 
     int n = points.size();
@@ -85,15 +84,17 @@ void convex_hull(std::vector<std::array<double, 2>>& points)
         points[i][1] += tmp[1];
     }
 
+    std::vector<std::array<double, 2>> stack;
     stack.push_back(points[0]);
     stack.push_back(points[1]);
 
     int i = 2;
+    int stack_size;
     while(i < n)
     {
-        int stack_size = stack.size();
+        stack_size = stack.size();
         double tmp = calc_det_T(stack[stack_size - 2], stack[stack_size - 1], points[i]);
-        if (tmp > 0 || stack.size() == 2)
+        if (tmp > 0 || stack_size == 2)
         {
             stack.push_back(points[i]);
             i++;
@@ -111,9 +112,9 @@ void convex_hull(std::vector<std::array<double, 2>>& points)
     points = stack;
 }
 
-void write_points_to_file(std::vector<std::array<double, 2>>& points)
+void write_points_to_file(std::string filename, std::vector<std::array<double, 2>>& points)
 {
-    std::ofstream file("hull.txt");
+    std::ofstream file(filename);
 
     for(auto& entry : points)
     {
