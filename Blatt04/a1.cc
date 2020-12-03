@@ -4,72 +4,76 @@
 #include <algorithm> // for sort
 #include <cmath> // for round
 
-// forward declaration
-void print_vector(std::vector<int>& v);
-std::pair<int, int> find_biggest_smallest(std::vector<int> v);
-std::vector<double> reversed(const std::vector<double>& v);
-void round_entries(std::vector<double>& v);
-void reverse_swap(std::vector<int>& v);
+namespace a1
+{
+    // forward declaration
+    void print_vector(std::vector<double>& v);
+    std::pair<double, double> find_biggest_smallest(std::vector<double> v);
+    std::vector<double> reversed(const std::vector<double>& v);
+    void round_entries(std::vector<double>& v);
+    void reverse_swap(std::vector<double>& v);
+} // End namespace a1
 
 int main(int argc, char** argv)
 {
     int vec_type;
     int int_input;
     double double_input;
-    std::vector<int> int_v;
     std::vector<double> double_v;
 
-    std::cout << "<int> or <double>? [1|else]" << std::flush;
+    std::cout << "A1a [1] | A1b [2] | A1c [3] | A1d [4] | A1e [5]: " << std::flush;
     std::cin >> int_input;
-
-    if (int_input == 1)
+  
+    std::cout << "Enter entries: " << std::flush;
+    while(std::cin >> double_input)
     {
-        while(std::cin >> int_input)
+        double_v.push_back(double_input);
+    }
+
+    std::vector<double> tmp = a1::reversed(double_v);
+
+    switch (int_input)
+    {
+        case 1:
         {
-            int_v.push_back(int_input);
+            a1::print_vector(double_v);
+            break;
         }
-    }
-    else
-    {
-        while(std::cin >> double_input)
+        
+        case 2:
         {
-            double_v.push_back(double_input);
+            std::pair<double, double> maxmin = a1::find_biggest_smallest(double_v);
+            std::cout << "max = " << maxmin.first << 
+                ", min = " << maxmin.second << std::endl;
+            break;
         }
+
+        case 3:
+        {
+            a1::print_vector(tmp);
+            break;
+        }
+
+        case 4:
+        {
+            a1::round_entries(double_v);
+            a1::print_vector(double_v);
+            break;
+        }
+
+        case 5:
+        {
+            a1::reverse_swap(double_v);
+            a1::print_vector(double_v);
+            break;
+        }
+
+        default:
+            break;
     }
-    std::cout << std::endl;
-    
-    // 1a)
-    // print_vector(int_v);
-
-    // 1b)
-    // std::pair<int, int> maxmin = find_biggest_smallest(int_v);
-    // std::cout << "max = " << maxmin.first << 
-    //     ", min = " << maxmin.second << std::endl;
-
-    // 1c)
-    // reversing an empty vector doesn't do anything - program just quits without output
-    // const std::vector<double> rev = double_v;
-    // for(double entry : reversed(rev))
-    // {
-    //     std::cout << entry << std::endl;
-    // }
-
-    // 1d)
-    round_entries(double_v);
-    for(double entry : double_v)
-    {
-        std::cout << entry << std::endl;
-    }
-
-    // 1e)
-    // reverse_swap(int_v);
-    // for(double entry : int_v)
-    // {
-    //     std::cout << entry << std::endl;
-    // }
 }
 
-void print_vector(std::vector<int>& v)
+void a1::print_vector(std::vector<double>& v)
 {
     for(int entry : v)
     {
@@ -77,13 +81,13 @@ void print_vector(std::vector<int>& v)
     }
 }
 
-std::pair<int, int> find_biggest_smallest(std::vector<int> v)
+std::pair<double, double> a1::find_biggest_smallest(std::vector<double> v)
 {
     std::sort(v.begin(), v.end());
     return std::make_pair(v[0], v[v.size() - 1]);
 }
 
-std::vector<double> reversed(const std::vector<double>& v)
+std::vector<double> a1::reversed(const std::vector<double>& v)
 {
     int n = v.size();
     std::vector<double> reversed;
@@ -96,7 +100,7 @@ std::vector<double> reversed(const std::vector<double>& v)
     return reversed;
 }
 
-void round_entries(std::vector<double>& v)
+void a1::round_entries(std::vector<double>& v)
 {
     for(double& entry : v)
     {
@@ -104,7 +108,7 @@ void round_entries(std::vector<double>& v)
     }
 }
 
-void reverse_swap(std::vector<int>& v)
+void a1::reverse_swap(std::vector<double>& v)
 {
     int n = v.size();
 
