@@ -5,18 +5,12 @@ namespace power
     // O(n) because of for-loop
     int iterative(int q, int n)
     {
-        int tmp = q;
-
-        if (n < 1)
-        {
-            return n < 1 ? 1 : q;
-        }
+        int tmp = 1;
         
-        for (int i = 1; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             tmp *= q;
         }
-
         return tmp;
     }
 
@@ -25,11 +19,9 @@ namespace power
     {
         int tmp;
 
-        if (n == 0)
-        {
-            return 1;
-        }
-        else if (n%2 == 0)
+        if (n == 0) return 1;
+
+        if (n%2 == 0)
         {
             tmp = recursive(q, n/2);
             return tmp *= tmp;
