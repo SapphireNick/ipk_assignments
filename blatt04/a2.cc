@@ -43,7 +43,7 @@ namespace a2
 	*/
 	bool sort_by_y(std::array<double, 2> const& a, std::array<double, 2> const& b)
 	{
-		return a[1] < b[1] || a[1] == b[1] && a[0] < b[0];
+		return a[1] < b[1] || (a[1] == b[1] && a[0] < b[0]);
 	}
 
 	/**
@@ -57,7 +57,7 @@ namespace a2
 	bool sort_by_angle(std::array<double, 2> const& a, std::array<double, 2> const& b)
 	{
 		double tmp{ a[0] * b[1] - a[1] * b[0] };
-		return tmp > 0 || tmp == 0 && std::abs(a[0]) > std::abs(b[0]);
+		return tmp > 0 || (tmp == 0 && std::abs(a[0]) > std::abs(b[0]));
 	}
 
 	/**
@@ -103,15 +103,15 @@ namespace a2
 
 		std::array<double, 2> p0{ points[0] };
 
-		for (auto&& e : points) {
-			e[0] -= p0[0];
-			e[1] -= p0[1];
+		for (auto&& p : points) {
+			p[0] -= p0[0];
+			p[1] -= p0[1];
 		}
 		std::sort(points.begin() + 1, points.end(), sort_by_angle);
 
-		for (auto&& e : points) {
-			e[0] += p0[0];
-			e[1] += p0[1];
+		for (auto&& p : points) {
+			p[0] += p0[0];
+			p[1] += p0[1];
 		}
 
 		for (unsigned long i = 2; i < points.size(); ++i) {
