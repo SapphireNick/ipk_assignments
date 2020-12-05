@@ -4,7 +4,7 @@
 
 double mean(const std::vector<double>& v)
 {
-    double sum;
+    double sum = 0;
 
     for(auto& entry : v)
     {
@@ -35,7 +35,7 @@ double median(const std::vector<double>& v)
 
 double moment(const std::vector<double>& v, int k)
 {
-    double sum;
+    double sum = 0;
 
     for(auto& entry : v)
     {
