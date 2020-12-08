@@ -16,7 +16,6 @@ namespace a1
 
 int main(int argc, char** argv)
 {
-    int vec_type;
     int int_input;
     double double_input;
     std::vector<double> double_v;
