@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/uniform.dir/uniform.cc.o CMakeFiles/uniform.dir/io.cc.o -o uniform  liba1.a 

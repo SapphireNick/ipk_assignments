@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/readvector.dir/readvector.cc.o CMakeFiles/readvector.dir/io.cc.o -o readvector  liba1.a 

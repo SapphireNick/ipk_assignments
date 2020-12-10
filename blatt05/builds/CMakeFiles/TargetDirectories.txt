@@ -1,6 +1,0 @@
-/home/dj/uni/s3/ipk_assignments/blatt05/builds/CMakeFiles/rebuild_cache.dir
-/home/dj/uni/s3/ipk_assignments/blatt05/builds/CMakeFiles/edit_cache.dir
-/home/dj/uni/s3/ipk_assignments/blatt05/builds/CMakeFiles/uniform.dir
-/home/dj/uni/s3/ipk_assignments/blatt05/builds/CMakeFiles/readvector.dir
-/home/dj/uni/s3/ipk_assignments/blatt05/builds/CMakeFiles/normal.dir
-/home/dj/uni/s3/ipk_assignments/blatt05/builds/CMakeFiles/a1.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/normal.dir/normal.cc.o CMakeFiles/normal.dir/io.cc.o -o normal  liba1.a 
