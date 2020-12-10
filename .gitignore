@@ -37,3 +37,6 @@
 # Build dir
 build/
 release-build/
+
+# .tar.gz files
+*.tar.gz
