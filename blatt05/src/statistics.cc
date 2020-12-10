@@ -29,7 +29,7 @@ double median(const std::vector<double>& v)
     }
     else
     {
-        return v_sorted[(n + 1)/2 - 1];
+        return v_sorted[n/2];
     }
 }
 

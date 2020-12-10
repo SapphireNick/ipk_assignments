@@ -25,7 +25,7 @@ add_executable(test_mean tests/test_mean.cc)
 add_executable(test_median tests/test_median.cc)
 add_executable(letterfrequencies letterfrequencies.cc)
 
-# Link programms against library "deps_a1"
+# Link programms against library "deps_a1" and "deps_a3"
 target_link_libraries(readvector PUBLIC deps_a1)
 target_link_libraries(normal PUBLIC deps_a1)
 target_link_libraries(uniform PUBLIC deps_a1)

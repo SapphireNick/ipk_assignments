@@ -9,7 +9,7 @@ double mean(const std::vector<double>& v);
 // Calculate median
 double median(const std::vector<double>& v);
 
-// Calculate momen
+// Calculate moment
 double moment(const std::vector<double>& v, int k);
 
 // Calculate standart deviation
