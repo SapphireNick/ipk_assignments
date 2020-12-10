@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dj/uni/s3/ipk_assignments/blatt05/statistics.cc
+statistics.hh
+/home/dj/uni/s3/ipk_assignments/blatt05/statistics.hh
+cmath
+-
+algorithm
+-
+
+/home/dj/uni/s3/ipk_assignments/blatt05/statistics.hh
+vector
+-
+

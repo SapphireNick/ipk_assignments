@@ -37,8 +37,9 @@
 # Archives
 *.tar.gz
 
-# Build directory
+# Build directories
 build/
+release-build/
 
 # Doxygen
 dox/

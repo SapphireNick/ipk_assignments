@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dj/uni/s3/ipk_assignments/blatt05/io.cc
+io.hh
+/home/dj/uni/s3/ipk_assignments/blatt05/io.hh
+iostream
+-
+random
+-
+string
+-
+
+/home/dj/uni/s3/ipk_assignments/blatt05/io.hh
+vector
+-
+
+/home/dj/uni/s3/ipk_assignments/blatt05/readvector.cc
+iostream
+-
+io.hh
+/home/dj/uni/s3/ipk_assignments/blatt05/io.hh
+

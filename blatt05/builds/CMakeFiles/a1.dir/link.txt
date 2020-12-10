@@ -1,0 +1,2 @@
+/usr/bin/ar qc liba1.a CMakeFiles/a1.dir/io.cc.o CMakeFiles/a1.dir/statistics.cc.o
+/usr/bin/ranlib liba1.a
