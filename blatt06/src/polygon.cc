@@ -1,12 +1,10 @@
 #include "polygon.hh"
-#include <cassert>
 
 //b
 Polygon::Polygon(const std::vector<Point>& corners) : _corners{corners} {}
 
 Polygon::Polygon(const std::vector<double>& x, const std::vector<double>& y)
 {
-	assert(x.size() == y.size());
 	for (int i = 0; i < x.size(); ++i) {
 		_corners.push_back({x[i], y[i]});
 	}
