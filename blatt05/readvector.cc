@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 	std::cout << "median: " << statistics::median(v) << '\n';
 	std::cout << "2nd moment: " << moment << '\n';
 	std::cout << "standard deviation: " << stddev << '\n';
-	std::cout << (stddev*stddev == moment - mean * mean) << '\n';
+	std::cout << (stddev * stddev == moment - mean * mean) << '\n';
 	
 	return 0;
 }
