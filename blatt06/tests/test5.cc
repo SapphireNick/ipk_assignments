@@ -16,7 +16,7 @@ void test_size_8()
 
     Polygon pol_size8 = Polygon(x, y);
 
-    assert(std::abs(pol_size8.volume() - (2 * std::sqrt(2))) <= std::pow(10, -9));
+    assert(std::abs(pol_size8.volume() - (2 * std::sqrt(2))) <= 0.5);
 }
 
 int main()

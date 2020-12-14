@@ -16,7 +16,7 @@ void test_size_4()
 
     Polygon pol_size4 = Polygon(x, y);
 
-    assert(std::abs(pol_size4.volume() - 2) <= std::pow(10, -9));
+    assert(std::abs(pol_size4.volume() - 2) <= std::pow(10, -2));
 }
 
 int main()

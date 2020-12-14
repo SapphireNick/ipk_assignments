@@ -1,5 +1,4 @@
 #include "../header/polygon.hh"
-#include <iostream>
 
 Polygon::Polygon(const std::vector<Point>& corners)
 : _corners(corners)
@@ -36,11 +35,14 @@ double Polygon::volume() const
         return 0;
     }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         sum += ((_corners[i].x() * _corners[i + 1].y()) - 
                 (_corners[i + 1].x() * _corners[i].y()));
     }
 
-    return 1/2 * sum;
+    sum += ((_corners[n - 1].x() * _corners[0].y()) - 
+            (_corners[0].x() - _corners[n - 1].y()));
+
+    return 0.5 * sum;
 }

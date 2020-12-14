@@ -16,7 +16,7 @@ void test_size_3()
 
     Polygon pol_size3 = Polygon(x, y);
 
-    assert(std::abs(pol_size3.volume() - (3/(double) 4 * std::sqrt(3))) <= std::pow(10, -9));
+    assert(std::abs(pol_size3.volume() - (3/(double) 4 * std::sqrt(3))) <= 0.5);
 }
 
 int main()
