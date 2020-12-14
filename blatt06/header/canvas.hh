@@ -9,7 +9,7 @@ class Canvas
 private:
     const int _horPixels;
     const int _vertPixels;
-    const double _heigt;
+    const double _heigth;
     const double _width;
     const Point _center;
     std::vector<std::vector<int>> _pixels;
