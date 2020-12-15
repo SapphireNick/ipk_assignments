@@ -2,6 +2,7 @@
 #define CANVAS_HH
 
 #include <vector>
+#include <string>
 #include "point.hh"
 
 class Canvas
@@ -20,6 +21,7 @@ public:
     int brightness(int i, int j);
     void setBrightness(int i, int j, int brightness);
     Point coord(int i , int j) const;
+    void write(const std::string& filename);
 };
 
 #endif // CANVAS_HH

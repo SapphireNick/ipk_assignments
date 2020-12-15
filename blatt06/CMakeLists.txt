@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.5)
 project(ipk_blatt06 LANGUAGES CXX)
 
 # Compile in C++14 and add Flags
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 # set(CMAKE_CXX_FLAGS -Wall)
 
 # Set build type
@@ -16,7 +16,7 @@ enable_testing()
 
 # Add libraries
 add_library(PointsPolygons src/point.cc src/polygon.cc)
-add_library(Canvas src/canvas.cc)
+add_library(Canvas src/canvas.cc src/pgm.cc)
 
 # Add executables
 add_executable(test1 tests/test1.cc)
@@ -25,7 +25,8 @@ add_executable(test3 tests/test3.cc)
 add_executable(test4 tests/test4.cc)
 add_executable(test5 tests/test5.cc)
 add_executable(test_self_intersecting tests/test_self_intersecting.cc)
-add_executable(test_canvas tests/test_canvas.cc)
+add_executable(testcorners tests/testcorners.cc)
+add_executable(plot plot.cc)
 
 # Link executables to libraries
 target_link_libraries(test1 PUBLIC PointsPolygons)
@@ -34,7 +35,8 @@ target_link_libraries(test3 PUBLIC PointsPolygons)
 target_link_libraries(test4 PUBLIC PointsPolygons)
 target_link_libraries(test5 PUBLIC PointsPolygons)
 target_link_libraries(test_self_intersecting PUBLIC PointsPolygons)
-target_link_libraries(test_canvas PUBLIC PointsPolygons Canvas)
+target_link_libraries(testcorners PUBLIC PointsPolygons Canvas)
+target_link_libraries(plot PUBLIC PointsPolygons Canvas)
 
 # Add tests
 add_test(LessThan3Corners test1)

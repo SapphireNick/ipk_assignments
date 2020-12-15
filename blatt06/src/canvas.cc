@@ -1,10 +1,11 @@
 #include "../header/canvas.hh"
+#include "../header/pgm.hh"
 
 Canvas::Canvas(const Point& center, double width, double height,
                 int horPixels, int vertPixels)
 : _center(center), _width(width), _heigth(height),
     _horPixels(horPixels), _vertPixels(vertPixels),
-    _pixels(horPixels, {{vertPixels}})
+    _pixels(horPixels, std::vector<int>(vertPixels))
 {};
 
 int Canvas::brightness(int i, int j)
@@ -21,4 +22,9 @@ Point Canvas::coord(int i, int j) const
 {
     return Point(i * (_width / _horPixels),
                  j * (_heigth / _vertPixels));
+}
+
+void Canvas::write(const std::string& filename)
+{
+    write_pgm(_pixels, filename);
 }
