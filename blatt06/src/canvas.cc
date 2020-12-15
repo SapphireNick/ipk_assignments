@@ -20,8 +20,8 @@ void Canvas::setBrightness(int i, int j, int brightness)
 
 Point Canvas::coord(int i, int j) const
 {
-    return Point(i * (_width / _horPixels),
-                 j * (_heigth / _vertPixels));
+    return Point(_center.x() + (i / (double) (_horPixels - 1) - 0.5) * _width,
+                    (_center.y() + (j / (double) (_vertPixels - 1) - 0.5) * _heigth));
 }
 
 void Canvas::write(const std::string& filename)
