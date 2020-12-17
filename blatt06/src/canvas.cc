@@ -1,5 +1,5 @@
-#include "../header/canvas.hh"
-#include "../header/pgm.hh"
+#include "canvas.hh"
+#include "pgm.hh"
 
 Canvas::Canvas(const Point& center, double width, double height,
                 int horPixels, int vertPixels)

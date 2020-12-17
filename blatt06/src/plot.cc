@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
-#include "header/canvas.hh"
-#include "header/pgm.hh"
+#include "canvas.hh"
+#include "pgm.hh"
 
 int grayscale_function(const Point& coords);
 
@@ -27,5 +27,5 @@ int main()
 
 int grayscale_function(const Point& coords)
 {
-    return std::max(0,(int) std::round(100 * (std::sin(1/coords.x()) * std::cos(1/coords.y()) + 1)));
+    return std::max(0,(int) std::round(100 * (std::sin(1/coords.x()) * std::sin(1/coords.y()) + 1)));
 }

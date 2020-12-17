@@ -6,7 +6,7 @@
 //d
 int main(int argc, char** argv)
 {
-	Canvas c;
+	Canvas c{{0, 0}, 16, 9, 2560, 1440};
 	if (c.coord(0, 0).x() != -8 || c.coord(0, 0).y() != -4.5) throw std::runtime_error("bottom left");
 	if (c.coord(2559, 0).x() != 8 || c.coord(2559, 0).y() != -4.5) throw std::runtime_error("bottom right");
 	if (c.coord(0, 1439).x() != -8 || c.coord(0, 1439).y() != 4.5) throw std::runtime_error("top left");

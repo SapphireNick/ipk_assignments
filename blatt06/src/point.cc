@@ -1,4 +1,4 @@
-#include "../header/point.hh"
+#include "point.hh"
 
 Point::Point()
 {};

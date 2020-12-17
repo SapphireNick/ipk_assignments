@@ -1,4 +1,4 @@
-#include "../header/pgm.hh"
+#include "pgm.hh"
 
 #include <cmath>
 #include <fstream>
