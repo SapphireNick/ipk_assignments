@@ -1,26 +1,22 @@
-#include <cassert>
-#include "../header/canvas.hh"
+#include <stdexcept>
+#include <vector>
 
-void test_canvas()
+#include "canvas.hh"
+
+//d
+int main(int argc, char** argv)
 {
-    Point center = Point(5, 5);
-    double width = 10;
-    double height = 10;
-    int horPixels = 10;
-    int vertPixels = 10;
-    Canvas test_canvas = Canvas(center, width, height, horPixels, vertPixels);
+	Canvas c;
+	if (c.coord(0, 0).x() != -8 || c.coord(0, 0).y() != -4.5) throw std::runtime_error("bottom left");
+	if (c.coord(2559, 0).x() != 8 || c.coord(2559, 0).y() != -4.5) throw std::runtime_error("bottom right");
+	if (c.coord(0, 1439).x() != -8 || c.coord(0, 1439).y() != 4.5) throw std::runtime_error("top left");
+	if (c.coord(2559, 1439).x() != 8 || c.coord(2559, 1439).y() != 4.5) throw std::runtime_error("top right");
 
-    assert(test_canvas.coord(0, 0).x() == center.x() - (0.5 * width) &&
-            test_canvas.coord(0, 0).y() == center.y() - (0.5 * height));
-    assert(test_canvas.coord(9, 0).x() == center.x() + (0.5 * width) &&
-            test_canvas.coord(9, 0).y() == center.y() - (0.5 * height));
-    assert(test_canvas.coord(0, 9).x() == center.x() - (0.5 * width) &&
-            test_canvas.coord(0, 9).y() == center.y() + (0.5 * height));
-    assert(test_canvas.coord(9, 9).x() == center.x() + (0.5 + width) &&
-            test_canvas.coord(9, 9).y() == center.y() + (0.5 + height));
-}
+	Canvas c1{{0.99, 0.99}, 15.9, 8.9, 2559, 1439};
+	if (c1.coord(0, 0).x() != 0.99 - 7.95 || c1.coord(0, 0).y() != 0.99 - 4.45) throw std::runtime_error("bottom left");
+	if (c1.coord(2558, 0).x() != 0.99 + 7.95 || c1.coord(2558, 0).y() != 0.99 - 4.45) throw std::runtime_error("bottom right");
+	if (c1.coord(0, 1438).x() != 0.99 - 7.95 || c1.coord(0, 1438).y() != 0.99 + 4.45) throw std::runtime_error("top left");
+	if (c1.coord(2558, 1438).x() != 0.99 + 7.95 || c1.coord(2558, 1438).y() != 0.99 + 4.45) throw std::runtime_error("top right");
 
-int main()
-{
-    test_canvas();
+	return 0;
 }
