@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.5)
 # Start project and set name to ipk_blatt05
 project(ipk_blatt06 LANGUAGES CXX)
 
-# Compile in C++14 and add Flags
+# Compile in C++17 and add Flags
 set(CMAKE_CXX_STANDARD 17)
 # set(CMAKE_CXX_FLAGS -Wall)
 
