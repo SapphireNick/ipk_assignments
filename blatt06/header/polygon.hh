@@ -13,8 +13,8 @@ public:
     // Constructors
     Polygon(const std::vector<Point>& corners);
 
-    Polygon(const std::vector<double> x,
-            const std::vector<double> y);
+    Polygon(const std::vector<double>& x,
+            const std::vector<double>& y);
 
     std::size_t corners() const;
 

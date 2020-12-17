@@ -4,8 +4,8 @@ Polygon::Polygon(const std::vector<Point>& corners)
 : _corners(corners)
 {};
 
-Polygon::Polygon(const std::vector<double> x,
-        const std::vector<double> y)
+Polygon::Polygon(const std::vector<double>& x,
+        const std::vector<double>& y)
 {
     int n = x.size();
 
@@ -30,7 +30,7 @@ double Polygon::volume() const
     double sum = 0;
     int n = _corners.size();
 
-    if (n <= 2)
+    if (n < 3)
     {
         return 0;
     }
