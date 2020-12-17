@@ -15,7 +15,7 @@ void Canvas::setBrightness(int i, int j, int brightness) { _pixels[i][j] = brigh
 //f
 Point Canvas::coord(int i, int j) const
 {
-	return {_center.x + (i / (_horPixels - 1.0) - 0.5) * _width, _center.y + (j / (_vertPixels - 1.0) -0.5) * _height};
+	return {_center.x + (i / (_horPixels - 1.0) - 0.5) * _width, _center.y + (j / (_vertPixels - 1.0) - 0.5) * _height};
 }
 
 //h
