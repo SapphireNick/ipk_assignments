@@ -37,7 +37,7 @@ class Point {
   }
   
   // Norm
-  double norm()
+  double norm() const
   {
     double norm = 0;
 
