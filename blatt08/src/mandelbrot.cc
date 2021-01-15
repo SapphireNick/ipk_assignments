@@ -11,7 +11,7 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
 
 int main(int argc, char** argv)
 {
-    Canvas canv = Canvas(Point(-1, 0), 4, 5, 400, 300);
+    Canvas canv = Canvas(Point(-1, 0), 20, 15, 400, 300);
     mandelbrot(canv, 1000, 1000, "mandelbrot.pgm");
 }
 
@@ -40,12 +40,13 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
 {
     int width = canvas.vertPixels();
     int height = canvas.horPixels();
+    IterationResult res;
 
     for(int i = 0; i < width; i++)
     {
         for(int j = 0; j < height; j++)
         {
-            IterationResult res = iterate(canvas.coord(i, j), canvas.center(),
+            res = iterate(canvas.coord(i, j), canvas.center(),
                                             threshold, maxIt);
             if (res.getPerfIter() == maxIt)
             {
@@ -55,7 +56,6 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
             {
                 canvas(i, j) = std::log(res.getPerfIter()) * 100;
             }
-            
         }
     }
 

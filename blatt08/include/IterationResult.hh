@@ -15,6 +15,7 @@ public:
     int& getPerfIter() { return _perfIterations; }
 
     // Constructor
+    IterationResult() : _res(Point(0, 0)), _perfIterations(0){}
     IterationResult(Point& res, int perfIterations)
     : _res(res), _perfIterations(perfIterations){}
 };
