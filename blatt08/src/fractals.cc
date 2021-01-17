@@ -8,7 +8,7 @@ IterationResult iterate(Point z, Point c, double threshold, int maxIt)
 {
 	int i{};
 	double t2{threshold * threshold};
-	while (i < maxIt && z.x * z.x + z.y * z.y < t2) {
+	while (z.x * z.x + z.y * z.y <= t2 && i < maxIt) {
 		z = (Point){z.x * z.x - z.y * z.y + c.x, 2 * z.x * z.y + c.y};
 		++i;
 	}
@@ -47,9 +47,9 @@ void julia(Canvas&& canvas, double threshold, int maxIt, std::string filename, b
 
 int main(int argc, char** argv)
 {
-	mandelbrot(Canvas({-0.77568377, 0.13646737}, 0.002, 0.002, 8000, 8000), 3, 1000, "mandelbrot.pgm");
-	julia(Canvas({-0.8, 0.156}, 1, 1, 8000, 8000), 3, 1000, "julia.pgm");
-	mandelbrot(Canvas({-0.77568377, 0.13646737}, 0.002, 0.002, 8000, 8000), 3, 1000, "smandelbrot.pgm", true);
-	julia(Canvas({-0.8, 0.156}, 1, 1, 8000, 8000), 3, 1000, "sjulia.pgm", true);
+	mandelbrot(Canvas({-0.77568377, 0.13646737}, 0.002, 0.002, 8000, 8000), 2, 1000, "mandelbrot.pgm");
+	julia(Canvas({-0.8, 0.156}, 1, 1, 8000, 8000), 2, 1000, "julia.pgm");
+	mandelbrot(Canvas({-0.77568377, 0.13646737}, 0.002, 0.002, 8000, 8000), 2, 1000, "smandelbrot.pgm", true);
+	julia(Canvas({-0.8, 0.156}, 1, 1, 8000, 8000), 2, 1000, "sjulia.pgm", true);
 	return 0;
 }
