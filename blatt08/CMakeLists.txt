@@ -20,10 +20,10 @@ include_directories(include)
 add_library(canvas src/canvas.cc src/pgm.cc)
 
 # Create executable programs
-add_executable(mandelbrot src/mandelbrot.cc)
+add_executable(fractals src/fractals.cc)
 
 # Links
-target_link_libraries(mandelbrot PUBLIC canvas)
+target_link_libraries(fractals PUBLIC canvas)
 
 # Add unit tests
 #add_test(name program)
