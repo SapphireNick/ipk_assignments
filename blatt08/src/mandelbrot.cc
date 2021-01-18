@@ -1,5 +1,5 @@
 // For debugging purposes
-// #include <iostream>
+#include <iostream>
 #include <string>
 #include <cmath>
 #include "IterationResult.hh"
@@ -11,32 +11,51 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
 
 int main(int argc, char** argv)
 {
-    Canvas canv = Canvas(Point(-1, 0), 4, 3, 1000, 500);
-    mandelbrot(canv, 2, 1000, "mandelbrot.pgm");
+    Canvas canv = Canvas(Point(-1, 0), 4, 3, 50, 50);
+    mandelbrot(canv, 3, 100, "mandelbrot.pgm");
 }
 
 IterationResult iterate (Point z, Point c, double threshold, int maxIt)
 {
     IterationResult iterRes = IterationResult(z, 0);
     Point tmp;
-    int x, y;
-    double distanceToOrigin_sq = std::pow(z.x(), 2) + std::pow(z.y(), 2);
+    double x, y;
+    static int count = 0;
 
     for (int i = 0; i < maxIt; i++)
     {
         x = iterRes.getPoint().x();
         y = iterRes.getPoint().y();
-        if (distanceToOrigin_sq > threshold * threshold) return iterRes;
+        if (x * x + y * y > threshold * threshold) 
+        {
+            // count++;
+            // std::cout << count << "   ";
+            return iterRes;
+        }
 
         tmp = Point(x * x - y * y + c.x(),
                     2 * x * y + c.y());
         iterRes.getPoint() = tmp;
         iterRes.getPerfIter()++;
-        distanceToOrigin_sq = x * x + y * y;
     }
 
     return iterRes;
 }
+
+// IterationResult iterate(Point z, Point c, double threshold, int maxIt)
+// {
+//     static int count = 0;
+// 	int i{};
+// 	double t2{threshold * threshold};
+// 	while (z.x() * z.x() + z.y() * z.y() <= t2 && i < maxIt) {
+// 		z = (Point){z.x() * z.x() - z.y() * z.y() + c.x(), 2 * z.x() * z.y() + c.y()};
+// 		++i;
+// 	}
+//     if (i != maxIt)
+//         std::cout << ++count << " ";
+    
+// 	return (IterationResult){z, i};
+// }
 
 void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filename)
 {
@@ -50,6 +69,9 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
         {
             res = iterate(Point(), canvas.coord(i, j),
                                             threshold, maxIt);
+
+            // std::cout << res.getPerfIter() << "  ";
+
             if (res.getPerfIter() == maxIt)
             {
                 canvas(i, j) = 0;
