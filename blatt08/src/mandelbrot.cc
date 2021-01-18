@@ -11,7 +11,7 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
 
 int main(int argc, char** argv)
 {
-    Canvas canv = Canvas(Point(-1, 0), 20, 15, 400, 300);
+    Canvas canv = Canvas(Point(-1, 0), 20, 15, 4000, 3000);
     mandelbrot(canv, 1000, 1000, "mandelbrot.pgm");
 }
 
@@ -25,8 +25,8 @@ IterationResult iterate (Point z, Point c, double threshold, int maxIt)
     {
         if (distanceToOrigin > threshold) return iterRes;
 
-        tmp = Point(std::pow(iterRes.getPoint().x(), 2),
-                    std::pow(iterRes.getPoint().y(), 2));
+        tmp = Point(std::pow(iterRes.getPoint().x(), 2) + c.x(),
+                    std::pow(iterRes.getPoint().y(), 2) + c.y());
         iterRes.getPoint() = tmp;
         iterRes.getPerfIter()++;
         distanceToOrigin = std::sqrt( std::pow(iterRes.getPoint().x(), 2)
@@ -38,8 +38,8 @@ IterationResult iterate (Point z, Point c, double threshold, int maxIt)
 
 void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filename)
 {
-    int width = canvas.vertPixels();
-    int height = canvas.horPixels();
+    int width = canvas.horPixels();
+    int height = canvas.vertPixels();
     IterationResult res;
 
     for(int i = 0; i < width; i++)
