@@ -7,8 +7,8 @@
 #include "canvas.hh"
 
 IterationResult iterate (Point z, Point c, double threshold, int maxIt);
-void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filename);
-void julia (Canvas& canvas, double threshold, int maxIt, std::string filename);
+void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filename, bool smooth = false);
+void julia (Canvas& canvas, double threshold, int maxIt, std::string filename, bool smooth = false);
 
 int main(int argc, char** argv)
 {
@@ -16,16 +16,18 @@ int main(int argc, char** argv)
     Canvas canv_jul = Canvas(Point(-0.8, 0.156), 4, 3, 4000, 3000);
 
     // mandelbrot(canv_mandl, 3, 1000, "mandelbrot.pgm");
-    julia(canv_jul, 3, 100, "julia.pgm");
+    // mandelbrot(canv_mandl, 3, 1000, "mandelbrot_smooth.pgm", true);
+    julia(canv_jul, 3, 1000, "julia.pgm");
+    julia(canv_jul, 3, 1000, "julia_smooth.pgm", true);
 }
 
 IterationResult iterate (Point z, Point c, double threshold, int maxIt)
 {
-    IterationResult iterRes = IterationResult(z, 0);
+    IterationResult iterRes = IterationResult(z, 1);
     Point tmp;
     double x, y;
 
-    for (int i = 0; i < maxIt; i++)
+    for (int i = 0; i < maxIt - 1; i++)
     {
         x = iterRes.getPoint().x();
         y = iterRes.getPoint().y();
@@ -43,7 +45,7 @@ IterationResult iterate (Point z, Point c, double threshold, int maxIt)
     return iterRes;
 }
 
-void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filename)
+void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filename, bool smooth)
 {
     int width = canvas.horPixels();
     int height = canvas.vertPixels();
@@ -62,6 +64,13 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
             {
                 canvas(i, j) = 0;
             }
+            else if (smooth)
+            {
+                canvas(i, j) = std::log(res.getPerfIter() -
+                                std::log2(std::log((std::sqrt(std::pow(res.getPoint().x(), 2) +
+                                                        std::pow(res.getPoint().y(), 2)))) /
+                                            std::log(threshold))) * 100;
+            }
             else
             {
                 canvas(i, j) = std::log(res.getPerfIter()) * 100;
@@ -73,7 +82,7 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
     canvas.write(filename);
 }
 
-void julia (Canvas& canvas, double threshold, int maxIt, std::string filename)
+void julia (Canvas& canvas, double threshold, int maxIt, std::string filename, bool smooth)
 {
     int width = canvas.horPixels();
     int height = canvas.vertPixels();
@@ -91,6 +100,13 @@ void julia (Canvas& canvas, double threshold, int maxIt, std::string filename)
             if (res.getPerfIter() == maxIt)
             {
                 canvas(i, j) = 0;
+            }
+            else if (smooth)
+            {
+                canvas(i, j) = std::log(res.getPerfIter() -
+                                std::log2(std::log((std::sqrt(std::pow(res.getPoint().x(), 2) +
+                                                        std::pow(res.getPoint().y(), 2)))) /
+                                            std::log(threshold))) * 100;
             }
             else
             {
