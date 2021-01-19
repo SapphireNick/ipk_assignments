@@ -12,7 +12,7 @@ include_directories(include libs libs/include)
 add_library(pgm libs/src/pgm.cc)
 
 #programms
-add_executable(mandelbrot src/mandelbrot.cc)
+add_executable(fractals src/fractals.cc)
 
 #link libs to exec
-target_link_libraries(mandelbrot PUBLIC pgm)
+target_link_libraries(fractals PUBLIC pgm)
