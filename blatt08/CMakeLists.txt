@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 # Start project and set its name
-project(ipkb6 LANGUAGES CXX)
+project(ipkb8 LANGUAGES CXX)
 
 # Force compiler to run in C++17 mode
 set(CMAKE_CXX_STANDARD 17)

@@ -2,7 +2,7 @@
 #include "pgm.hh"
 
 //c
-Canvas::Canvas(const Point& center, double width, double height, int horPixels, int vertPixels)
+Canvas::Canvas(const Point& center, double width, double height, unsigned int horPixels, unsigned int vertPixels)
 	: _center{center}, _width{width}, _height{height}, _horPixels{horPixels}, _vertPixels{vertPixels}, _pixels{horPixels, std::vector<int>(vertPixels, 0)}
 {}
 
@@ -12,9 +12,9 @@ double Canvas::width() const { return _width; }
 
 double Canvas::height() const { return _height; }
 
-int Canvas::horPixels() const { return _horPixels; }
+unsigned int Canvas::horPixels() const { return _horPixels; }
 
-int Canvas::vertPixels() const {return _vertPixels; }
+unsigned int Canvas::vertPixels() const {return _vertPixels; }
 
 int Canvas::operator()(int i, int j) const { return _pixels[i][j]; }
 
@@ -37,7 +37,7 @@ int Canvas::min()
 
 void Canvas::adjustRange()
 {
-	double min{Canvas::min()};
+	double min{(double) Canvas::min()};
 	for (int i = 0; i < _horPixels; ++i) {
 		for (int j = 0; j < _vertPixels; ++j) {
 			_pixels[i][j] *= (_pixels[i][j] - min)/(255 - min);

@@ -8,18 +8,18 @@
 class Canvas {
 	const Point _center;
 	const double _width, _height;
-	const int _horPixels, _vertPixels;
+	const unsigned int _horPixels, _vertPixels;
 	std::vector<std::vector<int>> _pixels;
 	int _min{-1};
 
 public:
-	Canvas(const Point& center = {-1, 0}, double width = 12, double height = 9, int horPixels = 4000, int vertPixels = 3000);
+	Canvas(const Point& center = {-1, 0}, double width = 12, double height = 9, unsigned int horPixels = 4000, unsigned int vertPixels = 3000);
 
 	Point center() const;
 	double width() const;
 	double height() const;
-	int horPixels() const;
-	int vertPixels() const;
+	unsigned int horPixels() const;
+	unsigned int vertPixels() const;
 
 	int min();
 	void adjustRange();
