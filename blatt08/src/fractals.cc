@@ -16,10 +16,10 @@ int main(int argc, char** argv)
     Canvas canv_jul_1 = Canvas(Point(-0.8, 0.156), 4, 3, 4000, 3000);
     Canvas canv_jul_2 = Canvas(Point(0.1, 0.64), 3, 4, 3000, 4000);
 
-    // mandelbrot(canv_mandl, 3, 1000, "mandelbrot.pgm");
-    // mandelbrot(canv_mandl, 3, 1000, "mandelbrot_smooth.pgm", true);
-    // julia(canv_jul_1, 5, 1000, "julia.pgm");
-    // julia(canv_jul_1, 5, 1000, "julia_smooth.pgm", true);
+    mandelbrot(canv_mandl, 3, 1000, "mandelbrot.pgm");
+    mandelbrot(canv_mandl, 3, 1000, "mandelbrot_smooth.pgm", true);
+    julia(canv_jul_1, 5, 1000, "julia.pgm");
+    julia(canv_jul_1, 5, 1000, "julia_smooth.pgm", true);
     julia(canv_jul_2, 5, 1000, "julia2_smooth.pgm", true);
 }
 
