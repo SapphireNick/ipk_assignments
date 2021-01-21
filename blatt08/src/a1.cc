@@ -25,7 +25,7 @@ void mandelbrot (Canvas& canvas, double threshold, int maxIt, std::string filena
 	for(int i = 0; i < canvas.horPixels(); ++i){
 		for (int j = 0; j < canvas.vertPixels(); ++j){
 			IterationResult res = iterate(Point(), canvas.coord(i, j), threshold, maxIt);
-			if (res.getnumIt() < maxIt){
+			if (res.getnumIt() == maxIt){
 				canvas(i, j) = 0;
 			}
 			else{
@@ -41,7 +41,7 @@ void julia (Point c , Canvas& canvas, double threshold, int maxIt, std::string f
 	for(int i = 0; i < canvas.horPixels(); ++i){
 		for (int j = 0; j < canvas.vertPixels(); ++j){
 			IterationResult res = iterate(canvas.coord(i, j), Point(-0.8, 0.156), threshold, maxIt);
-			if (res.getnumIt() < maxIt){
+			if (res.getnumIt() == maxIt){
 				canvas(i, j) = 0;
 			}
 			else{
