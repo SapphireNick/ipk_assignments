@@ -10,6 +10,7 @@ class Canvas {
 	const double _width, _height;
 	const int _horPixels, _vertPixels;
 	std::vector<std::vector<int>> _pixels;
+	int _min{-1};
 
 public:
 	Canvas(const Point& center = {-1, 0}, double width = 12, double height = 9, int horPixels = 4000, int vertPixels = 3000);
@@ -19,6 +20,9 @@ public:
 	double height() const;
 	int horPixels() const;
 	int vertPixels() const;
+
+	int min();
+	void adjustRange();
 
 	int operator()(int i, int j) const;
 	int& operator()(int i, int j);

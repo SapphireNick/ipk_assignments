@@ -20,6 +20,31 @@ int Canvas::operator()(int i, int j) const { return _pixels[i][j]; }
 
 int& Canvas::operator()(int i, int j) { return _pixels[i][j]; }
 
+int Canvas::min()
+{
+	if (_min >= 0) return _min;
+	
+	int min{255};
+	for (int i = 0; i < _horPixels; ++i) {
+		for (int j = 0; j < _vertPixels; ++j) {
+			if (min > _pixels[i][j]) {
+				min = _pixels[i][j];
+			}
+		}
+	}
+	return _min = min;
+}
+
+void Canvas::adjustRange()
+{
+	double min{Canvas::min()};
+	for (int i = 0; i < _horPixels; ++i) {
+		for (int j = 0; j < _vertPixels; ++j) {
+			_pixels[i][j] *= (_pixels[i][j] - min)/(255 - min);
+		}
+	}
+}
+
 Point Canvas::coord(int i, int j) const
 {
 	return {_center.x + (i / (_horPixels - 1.0) - 0.5) * _width, _center.y + (j / (_vertPixels - 1.0) - 0.5) * _height};
