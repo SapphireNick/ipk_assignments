@@ -2,7 +2,7 @@
 #define LETTERFREQ_HH
 
 #include "frequencysource.hh"
-#include "statistics.hh"
+// #include "statistics.hh"
 #include <iostream>
 
 template<typename Map>
