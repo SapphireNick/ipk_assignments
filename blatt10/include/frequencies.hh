@@ -33,7 +33,10 @@ public:
 
 	void printStatistics()
 	{
-		for (auto&& e : _plugins) e->printStatistics(_map);
+		for (auto&& e : _plugins) {
+			std::cout << e->name() << '\n';
+			e->printStatistics(_map);
+		}
 	}
 
 private:
