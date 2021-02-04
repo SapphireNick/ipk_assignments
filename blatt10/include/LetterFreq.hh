@@ -2,7 +2,6 @@
 #define LETTERFREQ_HH
 
 #include "frequencysource.hh"
-// #include "statistics.hh"
 #include <iostream>
 
 template<typename Map>
@@ -10,14 +9,13 @@ class LetterFrequencies
 {
 private:
     Map _data;
+    int _total_char_count;
 
 public:
     // Procces all letter obtained from source
     template<typename Source>
     void readData(Source& source)
     {
-        auto source = streamLetterSource(std::cin)
-
         while(true)
         {
             auto data = source.next();
@@ -26,6 +24,7 @@ public:
 
             data.first = std::toupper(data.first);
             _data[data.first]++;
+            _total_char_count++;
         }
     }
 
@@ -33,7 +32,7 @@ public:
     void print_frequencies()
     {
         for (auto& entry : _data)
-            std::cout << entry.first << " : " << entry.second << std::endl;
+            std::cout << entry.first << " : " << (double) entry.second / (_total_char_count / entry.second) << std::endl;
     }
 
     // does the statistics and prints to stdout
@@ -41,6 +40,8 @@ public:
     {
         // TODO
     }
+
+    LetterFrequencies(): _total_char_count(0){};
 };
 
 #endif // LETTERFREQ_HH

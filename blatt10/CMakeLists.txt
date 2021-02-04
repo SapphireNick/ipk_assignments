@@ -14,5 +14,11 @@ include_directories(include libs/include)
 # Set build-type
 set(CMAKE_BUILD_TYPE Release)
 
-# enable testing
+# Enable testing
 enable_testing()
+
+# Add libraries
+
+# Add executables
+add_executable(test_letterfreq_simple tests/test_letterfreq_simple)
+add_executable(test_letterfreq_compl tests/test_letterfreq_compl)
