@@ -2,21 +2,23 @@
 #define FREQUENCIES_HH_PHB02XMA
 
 #include "frequencysource.hh"
+#include "plugins.hh"
 #include <iostream>
 #include <cctype>
 #include <map>
+#include <memory>
+#include <vector>
 
 template <typename Map, typename Filter>
 class Frequencies {
-
-	Map _map;
-	Filter _filter;
-
-	typedef typename Map::key_type Data;
-
 public:
 
+	using Data = typename Map::key_type;
+	using Plugin = AnalysisPlugin<Map>;
+
 	Frequencies(Filter filter = Filter()) : _filter{filter} {}
+
+	void addPlugin(const std::shared_ptr<Plugin> plugin) {_plugins.push_back(plugin);}
 
 	template <typename Source>
 	void readData(Source& source)
@@ -31,13 +33,14 @@ public:
 
 	void printStatistics()
 	{
-		std::size_t total = 0;
-
-		for (auto&& e : _map) total += e.second;
-
-		for (auto&& e : _map)
-			std::cout << e.first << ": " << static_cast<double>(e.second) / total << '\n';
+		for (auto&& e : _plugins) e->printStatistics(_map);
 	}
+
+private:
+
+	Map _map;
+	Filter _filter;
+	std::vector<std::shared_ptr<Plugin>> _plugins;
 
 };
 
