@@ -2,8 +2,6 @@
 #include <fstream>
 #include <map>
 #include <unordered_map>
-#include <memory>
-#include "AnalysisPlugin.hh"
 #include "Frequencies.hh"
 
 int main(int argc, char** argv)
@@ -23,38 +21,38 @@ int main(int argc, char** argv)
 
     if (input == 1)
     {
-        using LetterMap = std::unordered_map<char, int>;
-        CharFilter charfilter;
+        using WordMap = std::unordered_map<std::string, int>;
+        StringFilter stringFilter;
 
-        Frequencies<LetterMap, CharFilter> letfreq(charfilter); 
+        Frequencies<WordMap, StringFilter> letfreq(stringFilter); 
         for (int i = 1; i < argc; i++)
         {
             std::ifstream f(argv[i]);
 
-            auto source = streamLetterSource(f);
+            auto source = streamWordSource(f);
             letfreq.readData(source);
         }
 
-        letfreq.addPlugin(std::make_shared<PrintTotalCount<LetterMap>>());
-        letfreq.addPlugin(std::make_shared<PrintFrequencies<LetterMap>>());
+        letfreq.addPlugin(std::make_shared<PrintTotalCount<WordMap>>());
+        letfreq.addPlugin(std::make_shared<PrintFrequencies<WordMap>>());
         letfreq.PrintStatistics();
     }
     else
     {
-        using LetterMap = std::map<char, int>;
-        CharFilter charfilter;
+        using WordMap = std::map<std::string, int>;
+        StringFilter stringFilter;
 
-        Frequencies<LetterMap, CharFilter> letfreq(charfilter); 
+        Frequencies<WordMap, StringFilter> letfreq(stringFilter); 
         for (int i = 1; i < argc; i++)
         {
             std::ifstream f(argv[i]);
 
-            auto source = streamLetterSource(f);
+            auto source = streamWordSource(f);
             letfreq.readData(source);
         }
 
-        letfreq.addPlugin(std::make_shared<PrintTotalCount<LetterMap>>());
-        letfreq.addPlugin(std::make_shared<PrintFrequencies<LetterMap>>());
+        letfreq.addPlugin(std::make_shared<PrintTotalCount<WordMap>>());
+        letfreq.addPlugin(std::make_shared<PrintFrequencies<WordMap>>());
         letfreq.PrintStatistics();
     }
 }

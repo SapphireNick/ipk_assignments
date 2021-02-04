@@ -20,5 +20,5 @@ enable_testing()
 # Add libraries
 
 # Add executables
-add_executable(test_letterfreq_simple tests/test_letterfreq_simple)
 add_executable(test_letterfreq_compl tests/test_letterfreq_compl)
+add_executable(test_stringfreq_compl tests/test_stringfreq_compl)
