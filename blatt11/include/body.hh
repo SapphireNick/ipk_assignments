@@ -9,13 +9,14 @@ class Body
 private:
     Point _pos;
     Point _vel;
+    double _mass;
     std::array<int, 3> _color;
 
 public:
     // Constructor
-    Body(Point pos = Point(), Point vel = Point(),
+    Body(Point pos = Point(), Point vel = Point(), double mass = 1,
          std::array<int, 3> color = std::array<int, 3>())
-    : _pos(pos), _vel(vel), _color(color)
+    : _pos(pos), _vel(vel), _mass(mass), _color(color)
     {}
 
     // Accesssors

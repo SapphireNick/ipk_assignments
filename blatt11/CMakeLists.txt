@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS -Wall)
 
 # Include directories
-include_directories(include libs/io/include libs/sdlwrappe/include)
+include_directories(include libs/io/include libs/sdlwrapper/include)
 
 # Set build type
 set(CMAKE_BUILD_TYPE Release)
