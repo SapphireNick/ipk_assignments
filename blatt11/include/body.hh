@@ -9,6 +9,7 @@ class Body
 private:
     Point _pos;
     Point _vel;
+    Point _acc = Point(0.0, 0.0);
     double _mass;
     std::array<int, 3> _color;
 
@@ -23,6 +24,9 @@ public:
     Point& pos() { return _pos; }
     Point pos() const { return _pos; }
     Point& vel() { return _vel; }
+    Point vel() const { return _vel; }
+    Point& acc() { return _acc; }
+    Point acc() const { return _acc; }
     double mass() const { return _mass; }
     std::array<int, 3>& colors() { return _color; }
 };

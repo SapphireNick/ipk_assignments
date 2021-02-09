@@ -26,20 +26,23 @@ int main()
         auto force = [grav_const](const auto& bodies, int i, double dt){
             Point tmp = Point(0, 0);
             double x, y, dist, mass = 0;
-            for (auto& body : bodies)
+
+            for (std::size_t j = 0; j < bodies.size(); j++)
             {
-                dist = std::sqrt(std::pow((body.pos() + bodies[i].pos()).x(), 2) + std::pow((body.pos() + bodies[i].pos()).y(), 2));
-                x = (body.pos().x() - bodies[i].pos().x()) * (1 / std::pow(dist, 3));
-                y = (body.pos().y() - bodies[i].pos().y()) * (1 / std::pow(dist, 3));
-                mass += body.mass();
+                if(i == (int) j) continue;
+
+                dist = std::sqrt(std::pow((bodies[j].pos() + bodies[i].pos()).x(), 2) + std::pow((bodies[j].pos() + bodies[i].pos()).y(), 2));
+                x = (bodies[j].pos().x() - bodies[i].pos().x()) * (1 / std::pow(dist, 3));
+                y = (bodies[j].pos().y() - bodies[i].pos().y()) * (1 / std::pow(dist, 3));
+                mass += bodies[j].mass();
                 tmp += Point(x, y);
             }
-            return grav_const * (mass-bodies[i].mass()) * tmp;
+            return (grav_const * (mass-bodies[i].mass()) * tmp);
         };
 
         eulerStep(force, bodies, 1, 0.1);
 
-        canv.clear(std::array<int, 3>{32, 32, 32});
+        canv.clear(std::array<int, 3>{0, 0, 0});
     }
 }
 
