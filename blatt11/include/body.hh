@@ -21,8 +21,9 @@ public:
 
     // Accesssors
     Point& pos() { return _pos; }
+    Point pos() const { return _pos; }
     Point& vel() { return _vel; }
-    double& mass() { return _mass; }
+    double mass() const { return _mass; }
     std::array<int, 3>& colors() { return _color; }
 };
 

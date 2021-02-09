@@ -17,13 +17,29 @@ int main()
     };
     canv.clear();
 
+    const double grav_const = 0.01;
+
     while(!canv.windowClosed())
     {
         displayBodies(&canv, bodies);
-        auto force = [](const auto& bodies, int i, double dt){
-            return Point(0, 0);
+
+        auto force = [grav_const](const auto& bodies, int i, double dt){
+            Point tmp = Point(0, 0);
+            double x, y, dist, mass = 0;
+            for (auto& body : bodies)
+            {
+                dist = std::sqrt(std::pow((body.pos() + bodies[i].pos()).x(), 2) + std::pow((body.pos() + bodies[i].pos()).y(), 2));
+                x = (body.pos().x() - bodies[i].pos().x()) * (1 / std::pow(dist, 3));
+                y = (body.pos().y() - bodies[i].pos().y()) * (1 / std::pow(dist, 3));
+                mass += body.mass();
+                tmp += Point(x, y);
+            }
+            return grav_const * (mass-bodies[i].mass()) * tmp;
         };
-        eulerStep(force, bodies, 1, 0.001);
+
+        eulerStep(force, bodies, 1, 0.1);
+
+        canv.clear(std::array<int, 3>{32, 32, 32});
     }
 }
 
