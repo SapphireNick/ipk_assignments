@@ -17,6 +17,11 @@ int main()
     };
     canv.clear();
 
+    Point center_of_grav = Point();
+
+    double total_mass = 0;
+    for(auto& b : bodies) total_mass += b.mass();
+
     const double grav_const = 0.01;
 
     while(!canv.windowClosed())
@@ -40,7 +45,18 @@ int main()
             return (grav_const * (mass-bodies[i].mass()) * tmp);
         };
 
-        eulerStep(force, bodies, 1, 0.1);
+        eulerStep(force, bodies, 1, 1);
+
+        for(auto& body : bodies)
+        {
+            center_of_grav += body.mass() * body.pos();
+        }
+        center_of_grav *= 1 / total_mass;
+
+        for(auto& b : bodies)
+        {
+            b.pos() -= center_of_grav;
+        }
 
         canv.clear(std::array<int, 3>{0, 0, 0});
     }
