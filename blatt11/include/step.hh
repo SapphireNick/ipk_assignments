@@ -13,10 +13,10 @@ void eulerStep(const Force& force, std::vector<Body>& bodies,
         bodies[i].acc() = force(bodies, i, dt);
     }
 
-    for(std::size_t i = 0; i < bodies.size(); i++)
+    for(auto& body : bodies)
     {
-        bodies[i].pos() = bodies[i].pos() + bodies[i].vel() * dt;
-        bodies[i].vel() = bodies[i].vel() + bodies[i].acc() * dt;
+        body.pos() = body.pos() + body.vel() * dt;
+        body.vel() = body.vel() + body.acc() * dt;
     }
 }
 
