@@ -1,6 +1,8 @@
 #ifndef POINT_HH_Q6UFEYX7
 #define POINT_HH_Q6UFEYX7
 
+#include <cmath>
+
 class Point {
 	double _x, _y;
 
@@ -9,6 +11,8 @@ public:
 
 	double x() const { return _x; }
 	double y() const { return _y; }
+
+	double dist2() { return _x * _x + _y * _y; }
 
 	Point operator+(const Point& p) const { return Point(_x + p.x(), _y + p.y()); }
 	Point operator-(const Point& p) const { return Point(_x - p.x(), _y - p.y()); }

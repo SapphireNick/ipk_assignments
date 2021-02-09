@@ -17,6 +17,10 @@ public:
 	Point& v() { return _v; }
 	Point& a() { return _a; }
 	double& m() { return _m; }
+	Point x() const { return _x; }
+	Point v() const { return _v; }
+	Point a() const { return _a; }
+	double m() const  { return _m; }
 	std::array<int, 3>& c() { return _c; }
 };
 

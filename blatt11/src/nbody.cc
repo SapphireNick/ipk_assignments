@@ -4,6 +4,7 @@
 #include <vector>
 
 int width{1600}, height{900};
+double G{0.01};
 
 template<typename Force, typename Body>
 void eulerStep(const Force& force, std::vector<Body>& bodies, double t, double dt)
@@ -31,17 +32,29 @@ int main(int argc, char** argv)
 	SDLCanvas canvas{"nbody", width, height};
 	canvas.clear();
 
-	std::vector<Body> bv{
+	std::vector<Body> bv1{
 		{{0, 0}, {0, 0}, 1e3, {255, 0, 0}},
 		{{100, 0}, {0, 0.3}, 10, {0, 255, 0}},
 		{{-200, 0}, {0, 0.2}, 10, {0, 0, 255}},
 		{{0, 250}, {-0.25, 0}, 10, {255, 255, 0}},
 	};
 
+	std::vector<Body> bv2{
+		{{150, 0}, {0, -0.2}, 1e3, {255, 0, 0}},
+		{{-150, 0}, {0, 0.2}, 1e3, {0, 255, 0}},
+		{{0, 150}, {0.2, 0}, 1e3, {0, 0, 255}},
+		{{0, -150}, {-0.2, 0}, 1e3, {255, 255, 0}},
+	};
+
+	std::vector<Body> bv{bv2};
+
 	auto force = [](const auto& bodies, int i, double dt)
 	{
-		//TODO
-		double force = 0;
+		double force{};
+		for (int j = 0; j < bodies.size(); ++j) {
+			if (i == j) continue;
+			force += G * bodies[j].m() / (bodies[i].x() - bodies[j].x()).dist2();
+		}
 		return force;
 	};
 
