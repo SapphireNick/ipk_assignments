@@ -4,7 +4,7 @@
 #include <vector>
 
 int width{1600}, height{900};
-double G{0.01};
+double G{0.1}, M{};
 
 template<typename Force, typename Body>
 void eulerStep(const Force& force, std::vector<Body>& bodies, double t, double dt)
@@ -21,8 +21,14 @@ void eulerStep(const Force& force, std::vector<Body>& bodies, double t, double d
 template<typename Body>
 void displayBodies(SDLCanvas& canvas, std::vector<Body>& bodies)
 {
+	Point cm{};
 	for (auto&& b : bodies) {
-		canvas.drawPixel(b.x().x() + 0.5 * width, b.x().y() + 0.5 * height, b.c());
+		cm += b.m() * b.x();
+	}
+	cm *= 1/M;
+
+	for (auto&& b : bodies) {
+		canvas.drawPixel(b.x().x() + 0.5 * width - cm.x(), b.x().y() + 0.5 * height - cm.y(), b.c());
 	}
 	canvas.display();
 }
@@ -57,6 +63,10 @@ int main(int argc, char** argv)
 		}
 		return force;
 	};
+
+	for (auto&& b : bv) {
+		M += b.m();
+	}
 
 	int t{};
 	while (!canvas.windowClosed())
