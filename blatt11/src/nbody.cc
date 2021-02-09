@@ -4,7 +4,7 @@
 #include <vector>
 
 int width{1600}, height{900};
-double G{0.1}, M{};
+double G{0.01}, M{};
 
 template<typename Force, typename Body>
 void eulerStep(const Force& force, std::vector<Body>& bodies, double t, double dt)
@@ -52,14 +52,14 @@ int main(int argc, char** argv)
 		{{0, -150}, {-0.2, 0}, 1e3, {255, 255, 0}},
 	};
 
-	std::vector<Body> bv{bv2};
+	std::vector<Body> bv{bv1};
 
 	auto force = [](const auto& bodies, int i, double dt)
 	{
-		double force{};
+		Point force{};
 		for (int j = 0; j < bodies.size(); ++j) {
 			if (i == j) continue;
-			force += G * bodies[j].m() / (bodies[i].x() - bodies[j].x()).dist2();
+			force += G * bodies[j].m() * (bodies[j].x() - bodies[i].x()).dist2();
 		}
 		return force;
 	};
