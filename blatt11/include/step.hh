@@ -2,7 +2,6 @@
 #define STEP_HH
 
 #include <vector>
-#include <iostream>
 
 template<typename Force, typename Body>
 void eulerStep(const Force& force, std::vector<Body>& bodies,
