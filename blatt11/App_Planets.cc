@@ -1,4 +1,5 @@
 #include "sdlwrapper.hh"
+#include "io.hh"
 #include "body.hh"
 #include "step.hh"
 #include <vector>
@@ -10,14 +11,6 @@ int main()
 {
     SDLCanvas canv("MKV", 1024, 768);
 
-    // First set
-    // std::vector<Body> bodies =  {
-    //     {{   0.,   0.}, {   0., 0.},  1e3, {255,   0,   0}},
-        // {{ 100.,   0.}, {   0., 0.3}, 10., {  0, 255,   0}},
-        // {{-200.,   0.}, {   0., 0.2}, 10., {  90,   90, 255}},
-    //     {{   0., 250.}, {-0.25, 0.},  10., {255, 255,   0}},
-    // };
-
     std::vector<Body> bodies =  {
         {{  150.,    0.}, {   0., -0.2},  1e3, { 255,    0,   0}},
         {{ -150.,    0.}, {   0.,  0.2},  1e3, {   0,  255,   0}},
@@ -25,14 +18,14 @@ int main()
         {{    0., -150.}, { -0.2,  0.0},  1e3, { 255,  255,   0}},
     };
 
+    const double grav_const = 0.01;
+
     canv.clear();
 
     Point center_of_grav = Point();
 
     double total_mass = 0;
     for(auto& b : bodies) total_mass += b.mass();
-
-    const double grav_const = 0.01;
 
     while(!canv.windowClosed())
     {

@@ -21,7 +21,9 @@ enable_testing()
 add_library(io libs/io/src/io.cc)
 
 # Add executables
-add_executable(Application Application.cc)
+add_executable(App_Rain App_Rain.cc)
+add_executable(App_Planets App_Planets.cc)
 
 # Link libraries against executables
-target_link_libraries(Application PUBLIC SDL2 io)
+target_link_libraries(App_Rain PUBLIC SDL2 io)
+target_link_libraries(App_Planets PUBLIC SDL2 io)
